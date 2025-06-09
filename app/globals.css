@@ -7,8 +7,10 @@
   /* WorthAsking Color Palette */
   --worthgreen: #566c4d;
   --worthgreen-light: #6e8a5e;
-  --worthgreen-dark: #3d4b36;
+  --worthgreen-dark: #1d3d14;
   --worthgreen-muted: #f7f7f5;
+
+  --font-sans: "General Sans", "General Sans Placeholder", sans-serif;
 }
 
 @theme inline {
@@ -26,13 +28,17 @@
   --color-worthgreen-muted: var(--worthgreen-muted);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  font-family: "General Sans", sans-serif;
 }
 
 .main-content {

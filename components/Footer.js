@@ -2,12 +2,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-white py-6 mt-auto">
-      <div className="max-w-1200 mx-auto px-4">
+    <footer className="bg-white border-t border-gray-100 py-8">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="text-center">
-          <p className="text-sm text-gray-400">
-            <span className="text-white">WorthAsking &copy; </span>Connect with
-            creators and get your questions answered
+          <p className="text-gray-600 font-medium">Tip for a Tip</p>
+          <p className="text-sm text-gray-500 mt-2">
+            © 2024 WorthAsking. Supporting thoughtful conversations.
           </p>
         </div>
       </div>

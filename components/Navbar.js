@@ -3,41 +3,46 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-600 flex justify-between items-center px-7 py-4">
-      <Link
-        href="/"
-        className="logo font-bold text-2xl hover:text-gray-300 transition-colors"
-      >
-        WorthAsking
+    <nav className="bg-white flex justify-between items-center px-10 py-6 border-b border-gray-100">
+      {/* Logo */}
+      <Link href="/" className="flex items-center">
+        <div className="w-8 h-8 bg-worthgreen rounded-full mr-3 flex items-center justify-center">
+          <span className="text-white font-bold text-sm">W</span>
+        </div>
       </Link>
-      <ul className="flex justify-around gap-6">
+
+      {/* Center Navigation */}
+      <ul className="flex gap-12 text-gray-700 font-medium">
         <li>
-          <Link href="/" className="hover:text-gray-300 transition-colors">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link href="/about" className="hover:text-gray-300 transition-colors">
-            About
+          <Link
+            href="/creators"
+            className="hover:text-worthgreen transition-colors"
+          >
+            Creators
           </Link>
         </li>
         <li>
           <Link
-            href="/signin"
-            className="hover:text-gray-300 transition-colors"
+            href="/questions"
+            className="hover:text-worthgreen transition-colors"
           >
-            Sign In
+            Questions
           </Link>
         </li>
         <li>
-          <Link
-            href="/register"
-            className="hover:text-gray-300 transition-colors"
-          >
-            Register
+          <Link href="/faq" className="hover:text-worthgreen transition-colors">
+            FAQ
           </Link>
         </li>
       </ul>
+
+      {/* Login */}
+      <Link
+        href="/signin"
+        className="text-gray-700 font-medium hover:text-worthgreen transition-colors"
+      >
+        Log in
+      </Link>
     </nav>
   );
 };

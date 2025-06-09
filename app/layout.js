@@ -14,13 +14,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Worth Asking",
-  description: "Tip, Ask and Maybe Get an Answer",
+  title: "WorthAsking - Thoughtful questions made simple",
+  description:
+    "Connect with creators you admire and support them by asking meaningful questions that matter.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en">
+      <head>
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
