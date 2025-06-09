@@ -3,6 +3,12 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* WorthAsking Color Palette */
+  --worthgreen: #566c4d;
+  --worthgreen-light: #6e8a5e;
+  --worthgreen-dark: #3d4b36;
+  --worthgreen-muted: #f7f7f5;
 }
 
 @theme inline {
@@ -12,11 +18,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  /* Background colors */
+  --color-worthgreen: var(--worthgreen);
+  --color-worthgreen-light: var(--worthgreen-light);
+  --color-worthgreen-dark: var(--worthgreen-dark);
+  --color-worthgreen-muted: var(--worthgreen-muted);
 }
 
 body {
@@ -32,6 +39,6 @@ body {
   flex: 1 0 auto;
   padding: 2rem 1rem;
   max-width: 1200px;
-  margin: 0 auto; /* Center the content */
+  margin: 0 auto;
   width: 100%;
 }
