@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <nav className="bg-white flex justify-between items-center px-10 py-6 border-b border-gray-100">
+    <nav className="bg-white flex justify-between items-center px-10 py-6">
       {/* Logo */}
       <Link href="/" className="flex items-center">
         <div className="w-8 h-8 bg-worthgreen rounded-full mr-3 flex items-center justify-center">
@@ -26,12 +26,7 @@ const Navbar = () => {
             href="/questions"
             className="hover:text-worthgreen transition-colors"
           >
-            Questions
-          </Link>
-        </li>
-        <li>
-          <Link href="/faq" className="hover:text-worthgreen transition-colors">
-            FAQ
+            About
           </Link>
         </li>
       </ul>
