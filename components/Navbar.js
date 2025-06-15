@@ -56,12 +56,12 @@ const Navbar = () => {
             </button>
           </>
         ) : (
-          <button
-            onClick={() => signIn("github")}
+          <Link
+            href="/auth/signin"
             className="text-gray-700 font-medium hover:text-worthgreen transition-colors"
           >
             Log in
-          </button>
+          </Link>
         )}
       </div>
     </nav>
