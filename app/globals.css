@@ -9,15 +9,6 @@
   --worthgreen-light: #6e8a5e;
   --worthgreen-dark: #1d3d14;
   --worthgreen-muted: #f7f7f5;
-
-  --font-sans: "General Sans", "General Sans Placeholder", sans-serif;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @theme {
@@ -28,16 +19,15 @@
   --color-worthgreen-muted: var(--worthgreen-muted);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #ededed;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: "General Sans", sans-serif;
-}
-
-.main-content {
-  flex: 1 0 auto;
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
 }

@@ -3,10 +3,7 @@ import { signIn } from "next-auth/react";
 
 export default function SignIn() {
   return (
-    <div
-      className="flex items-center justify-center bg-worthgreen-muted"
-      style={{ minHeight: "calc(100vh - 110px - 75px)" }}
-    >
+    <div className="flex items-center justify-center bg-worthgreen-muted h-full">
       <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center max-w-sm w-full">
         <h1 className="text-2xl font-light mb-6 text-worthgreen-dark">
           Sign in to WorthAsking
