@@ -1,7 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+
   return (
     <nav className="bg-white flex justify-between items-center px-10 py-6">
       {/* Logo */}
@@ -31,13 +36,34 @@ const Navbar = () => {
         </li>
       </ul>
 
-      {/* Login */}
-      <Link
-        href="/signin"
-        className="text-gray-700 font-medium hover:text-worthgreen transition-colors"
-      >
-        Log in
-      </Link>
+      {/* Auth Section */}
+      <div className="flex items-center gap-4">
+        {status === "loading" ? (
+          <span className="text-gray-500">Loading...</span>
+        ) : session ? (
+          <>
+            <img
+              src={session.user.image}
+              alt={session.user.name}
+              className="w-8 h-8 rounded-full"
+            />
+            <span className="text-gray-700">{session.user.name}</span>
+            <button
+              onClick={() => signOut()}
+              className="text-gray-700 hover:text-worthgreen transition-colors"
+            >
+              Sign out
+            </button>
+          </>
+        ) : (
+          <button
+            onClick={() => signIn("github")}
+            className="text-gray-700 font-medium hover:text-worthgreen transition-colors"
+          >
+            Log in
+          </button>
+        )}
+      </div>
     </nav>
   );
 };
