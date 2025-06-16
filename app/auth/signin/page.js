@@ -1,7 +1,36 @@
 "use client";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function SignIn() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  // Redirect to dashboard if already signed in
+  useEffect(() => {
+    if (status === "authenticated") {
+      router.push("/dashboard");
+    }
+  }, [status, router]);
+
+  // Show loading while checking session
+  if (status === "loading") {
+    return (
+      <div className="flex items-center justify-center bg-worthgreen-muted h-full">
+        <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center max-w-sm w-full">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-worthgreen"></div>
+          <p className="mt-4 text-gray-600">Checking authentication...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Don't render sign-in form if already authenticated
+  if (status === "authenticated") {
+    return null;
+  }
+
   return (
     <div className="flex items-center justify-center bg-worthgreen-muted h-full">
       <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center max-w-sm w-full">

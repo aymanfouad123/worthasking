@@ -47,7 +47,6 @@ const Navbar = () => {
               alt={session.user.name}
               className="w-8 h-8 rounded-full"
             />
-            <span className="text-gray-700">{session.user.name}</span>
             <button
               onClick={() => signOut()}
               className="text-gray-700 hover:text-worthgreen transition-colors"
