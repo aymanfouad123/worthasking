@@ -38,7 +38,7 @@ export default function SignIn() {
           Sign in to WorthAsking
         </h1>
         <button
-          onClick={() => signIn("github", { callbackUrl: "/" })}
+          onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
           className="flex items-center gap-2 bg-worthgreen text-white px-6 py-3 rounded-lg font-medium hover:bg-worthgreen-dark transition"
         >
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
