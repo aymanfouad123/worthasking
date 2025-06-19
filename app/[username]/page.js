@@ -155,6 +155,55 @@ const Username = ({ params }) => {
               </div>
             </div>
           </div>
+          {/* Support This Creator */}
+          <div className="bg-gradient-to-br from-worthgreen to-worthgreen-dark rounded-2xl p-6 text-white">
+            <h3 className="font-semibold mb-2">
+              Support {creator.displayName}
+            </h3>
+            <p className="text-sm opacity-90 mb-4">
+              Help fund their creative work by asking thoughtful questions.
+            </p>
+            <button className="w-full bg-white text-worthgreen py-2 px-4 rounded-lg font-medium hover:bg-gray-100 transition">
+              Become a Supporter
+            </button>
+          </div>
+          {/* Question Queue */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border">
+            <h3 className="font-semibold text-gray-900 mb-4">Question Queue</h3>
+            <div className="space-y-4">
+              {recentQuestions.map((question) => (
+                <div
+                  key={question.id}
+                  className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl"
+                >
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-sm font-medium text-gray-900 truncate">
+                        {question.asker}
+                      </span>
+                      <span className="text-xs bg-worthgreen text-white px-2 py-0.5 rounded-full">
+                        ${question.tipAmount}
+                      </span>
+                    </div>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                      {question.question}
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      {question.isAnswered ? (
+                        <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full">
+                          Answered
+                        </span>
+                      ) : (
+                        <span className="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full">
+                          Pending
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </div>
