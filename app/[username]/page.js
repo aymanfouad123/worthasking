@@ -211,3 +211,25 @@ const Username = ({ params }) => {
 };
 
 export default Username;
+
+/*
+Basic layout 
+return (
+  <div className="bg-gray-50 min-h-full">
+    { ...cover and profile info... }
+    <div className="max-w-6xl mx-auto p-8 grid md:grid-cols-3 gap-8">
+      { Main column }
+      <div className="md:col-span-2 space-y-8">
+        { Ask Question Form }
+        { Recent Answers }
+      </div>
+      { Sidebar }
+      <div className="space-y-6">
+        { Creator Stats }
+        { Question Queue }
+        { Support This Creator }
+      </div>
+    </div>
+  </div>
+);
+*/
