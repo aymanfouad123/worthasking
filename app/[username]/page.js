@@ -72,6 +72,7 @@ const Username = ({ params }) => {
       </div>
       <div className="w-full border-2 border-worthgreen-dark"></div>
       <div className="max-w-6xl mx-auto p-8 grid md:grid-cols-3 gap-8">
+        {/* Main grid */}
         <div className="md:col-span-2 space-y-8">
           {/* Ask Question Form */}
           <div className="bg-white rounded-2xl p-8 shadow-sm border">
@@ -125,6 +126,33 @@ const Username = ({ params }) => {
                     </div>
                   </div>
                 ))}
+            </div>
+          </div>
+        </div>
+        <div className="space-y-6">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border">
+            <h3 className="font-semibold text-gray-900 mb-4">Creator Stats</h3>
+            <div className="space-y-4">
+              <div className="flex justify-between">
+                <span className="text-gray-600">Total Supporters</span>
+                <span className="font-semibold text-gray-900">
+                  {creator.memberCount}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Questions Answered</span>
+                <span className="font-semibold text-gray-900">
+                  {creator.postCount}
+                </span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Response Rate</span>
+                <span className="font-semibold text-green-600">95%</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">Avg Response Time</span>
+                <span className="font-semibold text-gray-900">2 days</span>
+              </div>
             </div>
           </div>
         </div>
