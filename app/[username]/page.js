@@ -12,6 +12,54 @@ const Username = ({ params }) => {
     postCount: 86,
   };
 
+  const topSupporters = [
+    {
+      id: 1,
+      name: "Alex Rodriguez",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+      totalContributed: 250,
+      questionsAsked: 8,
+      joinedDate: "6 months ago",
+    },
+    {
+      id: 2,
+      name: "Emma Thompson",
+      avatar:
+        "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+      totalContributed: 180,
+      questionsAsked: 5,
+      joinedDate: "3 months ago",
+    },
+    {
+      id: 3,
+      name: "David Kim",
+      avatar:
+        "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      totalContributed: 150,
+      questionsAsked: 12,
+      joinedDate: "8 months ago",
+    },
+    {
+      id: 4,
+      name: "Sarah Johnson",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      totalContributed: 125,
+      questionsAsked: 3,
+      joinedDate: "2 months ago",
+    },
+    {
+      id: 5,
+      name: "Mike Wilson",
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+      totalContributed: 95,
+      questionsAsked: 7,
+      joinedDate: "4 months ago",
+    },
+  ];
+
   const recentQuestions = [
     {
       id: 1,
@@ -155,17 +203,52 @@ const Username = ({ params }) => {
               </div>
             </div>
           </div>
-          {/* Support This Creator */}
-          <div className="bg-gradient-to-br from-worthgreen to-worthgreen-dark rounded-2xl p-6 text-white">
-            <h3 className="font-semibold mb-2">
-              Support {creator.displayName}
-            </h3>
-            <p className="text-sm opacity-90 mb-4">
-              Help fund their creative work by asking thoughtful questions.
-            </p>
-            <button className="w-full bg-white text-worthgreen py-2 px-4 rounded-lg font-medium hover:bg-gray-100 transition">
-              Become a Supporter
-            </button>
+          {/* Top Supporters */}
+          <div className="bg-white rounded-2xl p-6 shadow-sm border">
+            <h3 className="font-semibold text-gray-900 mb-4">Top Supporters</h3>
+            <div className="space-y-3">
+              {topSupporters
+                .sort((a, b) => b.totalContributed - a.totalContributed)
+                .slice(0, 3)
+                .map((supporter, index) => (
+                  <div
+                    key={supporter.id}
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition"
+                  >
+                    <div className="relative">
+                      <img
+                        src={supporter.avatar}
+                        alt={supporter.name}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                      {/* Rank badge */}
+                      <div className="absolute -top-1 -right-1 w-5 h-5 bg-worthgreen text-white text-xs rounded-full flex items-center justify-center font-bold">
+                        {index + 1}
+                      </div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-medium text-gray-900 truncate">
+                          {supporter.name}
+                        </span>
+                        <span className="text-sm font-bold text-worthgreen">
+                          ${supporter.totalContributed}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <span>{supporter.questionsAsked} questions</span>
+                        <span>•</span>
+                        <span>{supporter.joinedDate}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+            </div>
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <button className="w-full text-sm text-worthgreen font-medium hover:text-worthgreen-dark transition">
+                View All Supporters
+              </button>
+            </div>
           </div>
           {/* Question Queue */}
           <div className="bg-white rounded-2xl p-6 shadow-sm border">
