@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
 
 const Username = ({ params }) => {
   // Dummy data to create layout
@@ -10,6 +12,7 @@ const Username = ({ params }) => {
       "https://images.pexels.com/photos/46160/field-clouds-sky-earth-46160.jpeg",
     memberCount: 928,
     postCount: 86,
+    minimumTip: 5,
   };
 
   const topSupporters = [
@@ -91,6 +94,8 @@ const Username = ({ params }) => {
     },
   ];
 
+  const [tipAmount, setTipAmount] = useState(creator.minimumTip);
+
   return (
     <div className="bg-gray-50 min-h-full">
       {/* Cover Image */}
@@ -124,23 +129,77 @@ const Username = ({ params }) => {
         <div className="md:col-span-2 space-y-8">
           {/* Ask Question Form */}
           <div className="bg-white rounded-2xl p-8 shadow-sm border">
-            <h2 className="text-2xl font-medium text-gray-900 mb-6">
-              Ask {creator.displayName} a question
-            </h2>
             <form className="space-y-6">
-              <textarea
-                className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-worthgreen focus:border-transparent resize-none text-black"
-                rows={4}
-                placeholder={`Ask ${creator.displayName} anything...`}
-              />
+              <div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-6">
+                  Your Question
+                </h3>
+                <textarea
+                  className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-worthgreen focus:border-transparent resize-none text-black"
+                  rows={4}
+                  placeholder={`Ask ${creator.displayName} anything...`}
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-2">
+                  Support with a tip
+                </label>
+                <div className="flex items-center gap-4">
+                  <div className="relative flex bg-gray-100 rounded-xl p-1">
+                    {[5, 10, 20, 50].map((amount) => (
+                      <div key={amount} className="relative z-10">
+                        <button
+                          type="button"
+                          onClick={() => setTipAmount(amount)}
+                          className={`px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-300 ${
+                            tipAmount === amount
+                              ? "text-white"
+                              : "text-gray-600 hover:text-worthgreen"
+                          }`}
+                        >
+                          ${amount}
+                        </button>
+                        {tipAmount === amount && (
+                          <motion.div
+                            className="absolute inset-0 bg-worthgreen rounded-lg -z-10"
+                            layoutId="active-tip-puck"
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30,
+                            }}
+                          />
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-500">or</span>
+                  <div className="flex items-center">
+                    <span className="text-gray-500 mr-1">$</span>
+                    <input
+                      type="number"
+                      value={tipAmount}
+                      onChange={(e) => setTipAmount(Number(e.target.value))}
+                      className="w-20 p-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-worthgreen focus:border-transparent text-black"
+                      placeholder="25"
+                      min={creator.minimumTip}
+                    />
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 mt-2">
+                  Minimum tip: ${creator.minimumTip}
+                </p>
+              </div>
+
               <button className="w-full bg-worthgreen text-white py-3 px-6 rounded-xl font-medium hover:bg-worthgreen-dark transition">
-                Ask Question & Send Tip
+                Ask Question & Send ${tipAmount} Tip
               </button>
             </form>
           </div>
           {/* Recent Answers */}
           <div className="bg-white rounded-2xl p-8 shadow-sm border">
-            <h3 className="text-xl font-medium text-gray-900 mb-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-6">
               Recent Answers
             </h3>
             <div className="space-y-6">
