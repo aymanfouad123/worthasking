@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SessionWrapper from "@/components/SessionWrapper";
+import { StripeProvider } from "@/components/StripeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,9 +34,11 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-full flex flex-col`}
       >
         <SessionWrapper>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
+          <StripeProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </StripeProvider>
         </SessionWrapper>
       </body>
     </html>
